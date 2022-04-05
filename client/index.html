@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <!-- Web App Config -->
+    <title>燧炻传送 | FydeDrop</title>
+    <meta name="description" content="Transfer files across devices in FydeOS">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="theme-color" content="#fafafa">
+    <meta name="apple-mobile-web-app-capable" content="no">
+    <meta name="apple-mobile-web-app-title" content="FydeDrop">
+    <!-- Icons -->
+    <link rel="icon" sizes="32x32" href="images/favicon.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon.png">
+    <!-- Resources -->
+    <link rel="stylesheet" href="styles.css?v1.1.0">
+    <link rel="manifest" href="manifest.json">
+</head>
+
+<body translate="no" style="visibility:hidden">
+    <header class="row-reverse">
+        <a href="#about" class="icon-button" title="About FydeDrop">
+            <svg class="icon">
+                <use xlink:href="#info-outline" />
+            </svg>
+        </a>
+        <a href="/" class="icon-button" title="Reload device">
+            <svg class="icon">
+                <use xlink:href="#reload-device" />
+            </svg>
+        </a>
+        <a href="#" id="notification" class="icon-button" title="Enable Notifications" hidden>
+            <svg class="icon">
+                <use xlink:href="#notifications" />
+            </svg>
+        </a>
+        <a href="#" id="install" class="icon-button" title="Install FydeDrop" hidden>
+            <svg class="icon">
+                <use xlink:href="#homescreen" />
+            </svg>
+        </a>
+    </header>
+    <!-- Peers -->
+    <x-peers class="center"></x-peers>
+    <x-no-peers>
+        <h2 data-translatable>FydeDrop // 燧炻传送</h2>
+        <div class="font-subheading" data-translatable>
+            <span>Visit <b>drop.fydeos.com</b> or scan this <qrcode class="tooltip">QR code</qrcode> on other devices to send files.</span>
+            <span>在其它设备上访问 <b>drop.fydeos.com</b> 或扫描此<qrcode class="tooltip">二维码</qrcode>开始传送文件。</span>
+        </div>
+    </x-no-peers>
+    <footer class="column">
+        <div class="font-body2" data-translatable>Share files with people in the same network. // 您可与同一网络下的用户共享文件。</div>
+    </footer>
+    <!-- Receive Dialog -->
+    <x-dialog id="receiveDialog">
+        <x-background class="full center">
+            <x-paper shadow="2">
+                <h3 data-translatable>File Received // 收到文件</h3>
+                <div class="font-subheading" id="fileName" data-translatable>Filename // 文件名</div>
+                <div class="font-body2" id="fileSize"></div>
+                <div class="row-reverse">
+                    <a class="button" close id="download" title="Save File" autofocus data-translatable>Save // 保存</a>
+                    <button class="button" close data-translatable>Ignore // 忽略</button>
+                </div>
+            </x-paper>
+        </x-background>
+    </x-dialog>
+    <!-- Send Text Dialog -->
+    <x-dialog id="sendTextDialog">
+        <form action="#">
+            <x-background class="full center">
+                <x-paper shadow="2">
+                    <h3 data-translatable>Send a Message // 发送消息</h3>
+                    <input id="textInput" autocomplete="off" autofocus>
+                    <div class="row-reverse">
+                        <button class="button" type="submit" close data-translatable>Send // 发送</button>
+                        <a class="button" close data-translatable>Cancel // 取消</a>
+                    </div>
+                </x-paper>
+            </x-background>
+        </form>
+    </x-dialog>
+    <!-- Receive Text Dialog -->
+    <x-dialog id="receiveTextDialog">
+        <x-background class="full center">
+            <x-paper shadow="2">
+                <h3 data-translatable>Message Received // 收到消息</h3>
+                <div class="font-subheading" id="text"></div>
+                <div class="row-reverse">
+                    <button class="button" id="copy" close autofocus data-translatable>Copy // 复制</button>
+                    <button class="button" close data-translatable>Ignore // 忽略</button>
+                </div>
+            </x-paper>
+        </x-background>
+    </x-dialog>
+    <!-- Toast -->
+    <div class="toast-container full center">
+        <x-toast class="row" shadow="1" id="toast" data-translatable>File Transfer Completed // 文件传送完毕</x-toast>
+    </div>
+    <!-- Modal -->
+    <div class="modal-container" id="modal" shadow="1">
+        <button class="close-modal" close>✕</button>
+        <div class="modal-content"></div>
+    </div>
+    <!-- About Page -->
+    <x-about id="about" class="full center column">
+        <section class="center column fade-in">
+            <header class="row-reverse">
+                <a href="#" class="close icon-button">
+                    <svg class="icon">
+                        <use xlink:href="#close" />
+                    </svg>
+                </a>
+            </header>
+            <h1 data-translatable>FydeDrop // 燧炻传送</h1>
+            <div class="font-subheading" data-translatable>Transfer files across devices in FydeOS // FydeOS 中的跨设备文件传输</div>
+            <div class="font-body2 instruction" data-translatable>FydeDrop lets you transfer files between P2P connection. It supposed that your devices have the same public IP address and are not using a proxy, network tunnel or VPN. // “燧炻传送” 可让您通过 P2P 连接传输文件。使用条件是您的设备处于同一公网 IP 地址，且没有使用代理、隧道或 VPN 等程序。</div>
+            <div class="font-body2">FydeDrop is made possible by <a href="https://github.com/RobinLinus">RobinLinus</a> and <a href="https://github.com/RobinLinus/snapdrop">Snapdrop</a></div>
+        </section>
+        <x-background></x-background>
+    </x-about>
+    <!-- SVG Icon Library -->
+    <svg style="display: none;">
+        <symbol id="wifi-tethering" viewBox="0 0 1024 1024">
+            <path d="m 512.0001,555.99993 m -57.14285,0 a 57.142851,57.142851 0 1 0 114.2857,0 57.142851,57.142851 0 1 0 -114.2857,0 z M 425.28583,703.9142 a 171.42853,171.42853 0 1 1 178.4571,-3.08574 l -41.94284,-41.94284 a 114.28569,114.28569 0 1 0 -93.99999,2.54286 z m -82.39998,82.40001 A 285.31423,285.31423 0 0 1 226.28587,555.99993 c 0,-157.79997 127.91426,-285.71422 285.71423,-285.71422 157.79998,0 285.71429,127.91425 285.71429,285.71422 A 285.25709,285.25709 0 0 1 685.74295,782.8571 l -40.85713,-40.85724 a 228.57139,228.57139 0 1 0 -261.02855,3.34287 l -40.94286,40.94288 z m -81.45713,81.48562 A 399.25706,399.25706 0 0 1 112.00017,555.99993 C 112.00017,335.08569 291.08586,156 512.0001,156 c 220.91429,0 399.99991,179.08569 399.99991,399.99993 0,123.99998 -56.39999,234.77139 -144.94281,308.14279 l -40.59998,-40.6 A 342.22851,342.22851 0 0 0 854.85713,555.99993 c 0,-189.34282 -153.51418,-342.85708 -342.85703,-342.85708 -189.34282,0 -342.85707,153.51426 -342.85707,342.85708 a 342.28564,342.28564 0 0 0 132.94283,271.1142 z"></path>
+        </symbol>
+        <symbol id="desktop-mac" viewBox="0 0 24 24">
+            <path d="M21 2H3c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h7l-2 3v1h8v-1l-2-3h7c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 12H3V4h18v10z"></path>
+        </symbol>
+        <symbol id="phone-iphone" viewBox="0 0 24 24">
+            <path d="M15.5 1h-8C6.12 1 5 2.12 5 3.5v17C5 21.88 6.12 23 7.5 23h8c1.38 0 2.5-1.12 2.5-2.5v-17C18 2.12 16.88 1 15.5 1zm-4 21c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zm4.5-4H7V4h9v14z"></path>
+        </symbol>
+        <symbol id="tablet-mac" viewBox="0 0 24 24">
+            <path d="M18.5 0h-14C3.12 0 2 1.12 2 2.5v19C2 22.88 3.12 24 4.5 24h14c1.38 0 2.5-1.12 2.5-2.5v-19C21 1.12 19.88 0 18.5 0zm-7 23c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zm7.5-4H4V3h15v16z"></path>
+        </symbol>
+        <symbol id="info-outline" viewBox="0 0 24 24">
+            <path d="M11 17h2v-6h-2v6zm1-15C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zM11 9h2V7h-2v2z"></path>
+        </symbol>
+        <symbol id="close" viewBox="0 0 24 24">
+            <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"></path>
+        </symbol>
+        <symbol id="help-outline" viewBox="0 0 24 24">
+            <path d="M11 18h2v-2h-2v2zm1-16C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm0-14c-2.21 0-4 1.79-4 4h2c0-1.1.9-2 2-2s2 .9 2 2c0 2-3 1.75-3 5h2c0-2.25 3-2.5 3-5 0-2.21-1.79-4-4-4z"></path>
+        </symbol>
+        <symbol id="notifications">
+            <path d="M12 22c1.1 0 2-.9 2-2h-4c0 1.1.89 2 2 2zm6-6v-5c0-3.07-1.64-5.64-4.5-6.32V4c0-.83-.67-1.5-1.5-1.5s-1.5.67-1.5 1.5v.68C7.63 5.36 6 7.92 6 11v5l-2 2v1h16v-1l-2-2z" />
+        </symbol>
+        <symbol id="homescreen">
+            <path fill="none" d="M0 0h24v24H0V0z" />
+            <path d="M18 1.01L8 1c-1.1 0-2 .9-2 2v3h2V5h10v14H8v-1H6v3c0 1.1.9 2 2 2h10c1.1 0 2-.9 2-2V3c0-1.1-.9-1.99-2-1.99zM10 15h2V8H5v2h3.59L3 15.59 4.41 17 10 11.41z" />
+            <path fill="none" d="M0 0h24v24H0V0z" />
+        </symbol>
+        <symbol id="reload-device" viewBox="0 0 768 768">
+            <path d="m 693.8549,153.37142 -44.01412,33.6 C 589.82861,112.07618 496.49369,64 391.687,64 210.71403,64 64.234398,206.85714 64.00028,383.61904 63.766163,560.53333 210.55796,704 391.687,704 c 141.48513,0 262.05574,-87.61905 307.94281,-210.36191 1.17059,-3.2 -0.54628,-6.78095 -3.82392,-7.84761 l -44.24825,-14.85715 c -3.1996,-1.06666 -6.71137,0.53333 -7.88196,3.65715 -1.40471,3.80952 -2.96549,7.61904 -4.60432,11.35238 -13.50078,31.23809 -32.85451,59.27618 -57.5149,83.35238 -24.66041,24.07618 -53.37884,42.97143 -85.29689,56.22857 -33.01058,13.63809 -68.20629,20.57143 -104.41648,20.57143 -36.28825,0 -71.4059,-6.93334 -104.4165,-20.57143 -31.91804,-13.18096 -60.63648,-32.07618 -85.29688,-56.22857 -24.66038,-24.0762 -44.01412,-52.11429 -57.5149,-83.35238 -13.96903,-32.30476 -21.07059,-66.59048 -21.07059,-102.01906 0,-35.42857 7.10156,-69.71428 21.07059,-102.01904 13.50078,-31.23809 32.85452,-59.27618 57.5149,-83.35237 24.6604,-24.0762 53.37884,-42.97143 85.29688,-56.22858 33.0106,-13.63809 68.20629,-20.57142 104.4165,-20.57142 36.28824,0 71.4059,6.93333 104.41648,20.57142 31.91805,13.18095 60.63648,32.07619 85.29689,56.22858 7.72587,7.54285 14.98352,15.54284 21.6949,23.92381 l -46.97961,35.80952 c -4.13609,3.1238 -2.73138,9.5238 2.34117,10.74285 l 137.03689,32.76191 c 3.90196,0.91428 7.72587,-1.98096 7.72587,-5.86667 L 704,158.09524 c -0.078,-5.02858 -6.08706,-7.84762 -10.1451,-4.72382 z"></path>
+        </symbol>
+    </svg>
+    <!-- Scripts -->
+    <script src="scripts/network.js?v1.1.0"></script>
+    <script src="scripts/ui.js?v1.1.0"></script>
+    <!-- Sounds -->
+    <audio id="dropsound" autobuffer="true">
+        <source src="sounds/drop.mp3" type="audio/mpeg">
+    </audio>
+    <!-- no script -->
+    <noscript>
+        <x-noscript class="full center column">
+            <h1>Enable Javascript</h1>
+            <h3>FydeDrop works only with Javascript.</h3>
+        </x-noscript>
+        <style>
+        x-noscript {
+            background: #599cfc;
+            color: white;
+            z-index: 2;
+        }
+        a[href="#info"] {
+            color: white;
+        }
+        </style>
+    </noscript>
+</body>

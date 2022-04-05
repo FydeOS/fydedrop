@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   t="1583115958116"
+   class="icon"
+   viewBox="0 0 1024 1024"
+   version="1.1"
+   p-id="1393"
+   data-spm-anchor-id="a313x.7781069.0.i10"
+   width="128"
+   height="128"
+   id="svg64"
+   sodipodi:docname="fydedrop-apple.svg"
+   inkscape:version="1.0beta2 (2b71d25, 2019-12-03)"
+   inkscape:export-filename="/Users/wyudong/Desktop/favicon.png"
+   inkscape:export-xdpi="24"
+   inkscape:export-ydpi="24">
+  <metadata
+     id="metadata68">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <sodipodi:namedview
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     inkscape:document-rotation="0"
+     borderopacity="1"
+     objecttolerance="10"
+     gridtolerance="10"
+     guidetolerance="10"
+     inkscape:pageopacity="0"
+     inkscape:pageshadow="2"
+     inkscape:window-width="1559"
+     inkscape:window-height="860"
+     id="namedview66"
+     showgrid="true"
+     inkscape:zoom="5.09375"
+     inkscape:cx="58.895706"
+     inkscape:cy="63.411043"
+     inkscape:window-x="0"
+     inkscape:window-y="23"
+     inkscape:window-maximized="0"
+     inkscape:current-layer="svg64">
+    <inkscape:grid
+       id="grid839"
+       type="xygrid" />
+  </sodipodi:namedview>
+  <defs
+     id="defs58">
+    <style
+       type="text/css"
+       id="style56" />
+  </defs>
+  <path
+     d="m 508.27001,540.26989 m -42.8957,0 a 42.895702,42.895702 0 1 0 85.7914,0 42.895702,42.895702 0 1 0 -85.7914,0 z M 443.17579,651.3054 a 128.68709,128.68709 0 1 1 133.96326,-2.31638 L 545.6536,617.50359 a 85.791393,85.791393 0 1 0 -70.56342,1.90886 z M 381.3202,713.16103 A 214.17821,214.17821 0 0 1 293.79153,540.26989 c 0,-118.45648 96.02201,-214.47849 214.47848,-214.47849 118.45648,0 214.47852,96.02201 214.47852,214.47849 A 214.13533,214.13533 0 0 1 638.6944,710.56586 l -30.67043,-30.6705 a 171.58279,171.58279 0 1 0 -195.94756,2.5094 l -30.73478,30.73479 z m -61.14782,61.1692 A 299.71224,299.71224 0 0 1 208.00012,540.26989 C 208.00012,374.43512 342.43524,240 508.27001,240 c 165.8348,0 300.26987,134.43512 300.26987,300.26989 0,93.08366 -42.33806,176.23697 -108.80492,231.31504 l -30.47739,-30.4774 a 256.90234,256.90234 0 0 0 96.38659,-200.83764 c 0,-142.1349 -115.23923,-257.37418 -257.37415,-257.37418 -142.13489,0 -257.37418,115.23928 -257.37418,257.37418 a 256.94522,256.94522 0 0 0 99.79684,203.51861 z"
+     id="path62"
+     inkscape:connector-curvature="0"
+     style="fill:#800000;fill-opacity:1;stroke-width:1.00537" />
+</svg>
